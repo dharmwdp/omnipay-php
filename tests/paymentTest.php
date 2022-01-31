@@ -21,7 +21,7 @@ class paymentTest extends TestCase
     public function testPay()
     {
         $data = $this->api->payment->all();
-
+        print_r($data);die;
         $this->assertTrue(is_array($data->toArray()));
 
         $this->assertTrue(is_array($data['items']));
