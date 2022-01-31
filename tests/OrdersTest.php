@@ -1,8 +1,8 @@
 <?php
 
-namespace Razorpay\Tests;
+namespace Omnipay\Tests;
 
-use Razorpay\Api\Request;
+use Omnipay\Api\Request;
 
 class OrdersTest extends TestCase
 {
