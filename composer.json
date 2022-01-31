@@ -1,6 +1,7 @@
 {
     "name": "omnipay/omnipay",
     "description": "Omnipay PHP Client Library",
+    "keywords": ["razorpay", "api", "php", "client"],
     "authors": {
         {
             "name": "Dharmraj Kumhar",
