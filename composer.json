@@ -1,8 +1,8 @@
 {
-   "name":"omnipay/omnipay",
+   "name":"omni-pay/omni-pay",
    "description":"Omnipay PHP Client Library",
    "keywords":[
-      "razorpay",
+      "omnipay",
       "api",
       "php",
       "client"
