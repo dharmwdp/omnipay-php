@@ -1,17 +1,31 @@
 {
-    "name": "vitalis/hello-composer",
-    "description": "A simple hello world composer package",
+    "name": "omnipay/omnipay",
+    "description": "Omnipay PHP Client Library",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ogbonna Vitalis",
-            "email": "agavitalisogbonna@gmail.com"
+            "name": "Dharmraj Kumhar",
+            "email": "developers.wdp@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
-    "autoload": {
-        "psr-4": {"vitalis\\HelloWorld\\": "src/"}
+    "support": {
+        "email": "info@digitalworld.com.sa",
     },
-    "require": {}
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.3.0",
+        "rmccue/requests": "v1.8.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "raveren/kint": "1.*",
+        "phpunit/phpunit": "~4.8|~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "omnipay\\Api\\": "src/",
+            "omnipay\\Tests\\": "tests/"
+        }
+    }
 }
