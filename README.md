@@ -1,1 +1,1 @@
-# omnipay1.0-sdk
+# omnipay-php
