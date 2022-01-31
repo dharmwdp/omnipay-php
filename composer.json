@@ -39,5 +39,6 @@
          "omnipay\\Api\\":"src/",
          "omnipay\\Tests\\":"tests/"
       }
-   }
+   },
+   "prefer-stable": true,
 }
