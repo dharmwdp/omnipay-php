@@ -1,0 +1,38 @@
+{
+    "name": "omnipay/omnipay",
+    "description": "Omnipay PHP Client Library",
+    "keywords": ["omnipay", "api", "php", "client"],
+    "authors": [
+        {
+            "name": "Dharmraj Kumhar",
+            "email": "developers.wdp@gmail.com",
+            "homepage": "https://psp.digitalworld.com.sa/",
+            "role": "Developer"
+        },
+        {
+            "name": "Kanhaiya Lal Kumhar",
+            "email": "developers.wdp@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "developers.wdp@gmail.com",
+    },
+    "homepage": "https://psp.digitalworld.com.sa/",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0",
+        "rmccue/requests": "v1.8.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "raveren/kint": "1.*",
+        "phpunit/phpunit": "~4.8|~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "omnipay\\Api\\": "src/",
+            "omnipay\\Tests\\": "tests/"
+        }
+    }
+}
