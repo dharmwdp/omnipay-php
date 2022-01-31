@@ -6,9 +6,9 @@ use Razorpay\Api\Request;
 
 class paymentTest extends TestCase
 {
-    private $orderId = 'order_IEcrUMyevZFuCS';
+    private $orderId = '4zsyixop161f4fcda7f125';
 
-    private $paymentId = 'pay_IEczPDny6uzSnx';
+    private $paymentId = '0rh3d74p261f4fcda7f50d';
 
     public function setUp()
     {
