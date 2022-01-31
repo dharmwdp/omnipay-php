@@ -40,5 +40,5 @@
          "omnipay\\Tests\\":"tests/"
       }
    },
-   "prefer-stable": true,
+   "prefer-stable": true
 }
