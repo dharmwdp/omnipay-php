@@ -2,7 +2,7 @@
     "name": "omnipay/omnipay",
     "description": "Omnipay PHP Client Library",
     "keywords": ["omnipay", "api", "php", "client"],
-    "authors": [
+    "authors": {
         {
             "name": "Dharmraj Kumhar",
             "email": "developers.wdp@gmail.com",
@@ -14,7 +14,7 @@
             "email": "developers.wdp@gmail.com",
             "role": "Developer"
         }
-    ],
+    },
     "support": {
         "email": "info@digitalworld.com.sa",
     },
