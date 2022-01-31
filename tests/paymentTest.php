@@ -13,7 +13,19 @@ class paymentTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-    }    
+    }  
+    
+    /**
+     * pay
+     */
+    public function testPay()
+    {
+        $data = $this->api->payment->all();
+
+        $this->assertTrue(is_array($data->toArray()));
+
+        $this->assertTrue(is_array($data['items']));
+    }
 
     /**
      * Fetch all payment
