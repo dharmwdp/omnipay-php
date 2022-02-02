@@ -1,12 +1,12 @@
 <?php
 
-namespace Razorpay\Api\Test;
+namespace Omnipay\Api\Test;
 
-include 'Razorpay.php';
+include 'Omnipay.php';
 
-use Razorpay\Api\Api;
+use Omnipay\Api\Api;
 
-class RazorpayTest extends \PHPUnit_Framework_TestCase
+class OmnipayTest extends \PHPUnit_Framework_TestCase
 {
     function setUp()
     {
@@ -15,7 +15,7 @@ class RazorpayTest extends \PHPUnit_Framework_TestCase
 
     public function testApiAccess()
     {
-		$this->assertInstanceOf('Razorpay\Api\Api', $this->api);
+		$this->assertInstanceOf('Omnipay\Api\Api', $this->api);
 	}
 
     public function testRequests()
