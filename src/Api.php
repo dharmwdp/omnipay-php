@@ -1,10 +1,10 @@
 <?php
 
-namespace Razorpay\Api;
+namespace Omnipay\Api;
 
 class Api
 {
-    protected static $baseUrl = 'https://api.razorpay.com/v1/';
+    protected static $baseUrl = 'https://psp.digitalworld.com.sa/api/v1/';
 
     protected static $key = null;
 
@@ -16,7 +16,7 @@ class Api
      */
     public static $appsDetails = array();
 
-    const VERSION = '2.8.1';
+    const VERSION = '1.0.0';
 
     /**
      * @param string $key
