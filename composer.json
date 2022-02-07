@@ -36,8 +36,8 @@
     },
    "autoload":{
       "psr-4":{
-         "omnipay\\Api\\":"src/",
-         "omnipay\\Tests\\":"tests/"
+         "Omnipay\\Api\\":"src/",
+         "Omnipay\\Tests\\":"tests/"
       }
    },
    "prefer-stable": true
