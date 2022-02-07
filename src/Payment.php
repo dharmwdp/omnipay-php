@@ -1,6 +1,6 @@
 <?php
 
-namespace Razorpay\Api;
+namespace Omnipay\Api;
 
 use Requests;
 
