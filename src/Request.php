@@ -1,12 +1,12 @@
 <?php
 
-namespace Razorpay\Api;
+namespace Omnipay\Api;
 
 use Requests;
 use Exception;
 use Requests_Hooks;
-use Razorpay\Api\Errors;
-use Razorpay\Api\Errors\ErrorCode;
+//use Razorpay\Api\Errors;
+//use Razorpay\Api\Errors\ErrorCode;
 
 
 // Available since PHP 5.5.19 and 5.6.3
@@ -26,7 +26,7 @@ class Request
      * @var array
      */
     protected static $headers = array(
-        'Razorpay-API'  =>  1    
+        'Omnipay-API'  =>  1    
     );
 
     /**
@@ -167,7 +167,7 @@ class Request
 
     protected function constructUa()
     {
-        $ua = 'Razorpay/v1 PHPSDK/' . Api::VERSION . ' PHP/' . phpversion();
+        $ua = 'Omnipay/v1 PHPSDK/' . Api::VERSION . ' PHP/' . phpversion();
 
         $ua .= ' ' . $this->getAppDetailsUa();
 
