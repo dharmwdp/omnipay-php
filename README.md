@@ -26,7 +26,7 @@ This PHP library follows the following practices:
 
 ## Basic Usage
 
-Instantiate the razorpay php instance with `key_id` & `key_secret`. You can obtain the keys from the dashboard app ([https://psp.digitalworld.com.sa/user-api-keys](https://psp.digitalworld.com.sa/user-api-keys))
+Instantiate the omnipay php instance with `key_id` & `key_secret`. You can obtain the keys from the dashboard app ([https://psp.digitalworld.com.sa/user-api-keys](https://psp.digitalworld.com.sa/user-api-keys))
 
 ```php
 use Omnipay\Api\Api;
