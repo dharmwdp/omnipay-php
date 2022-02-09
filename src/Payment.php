@@ -157,7 +157,7 @@ class Payment extends Entity
      */
     public function createPaymentJson($attributes = array())
     {
-        $relativeUrl = $this->getEntityUrl() . 'create/json';
+        $relativeUrl = $this->getEntityUrl() . 'encryptDecrypt2/encrypt';
 
         return $this->request('POST', $relativeUrl, $attributes);
     }
@@ -187,6 +187,18 @@ class Payment extends Entity
         $relativeUrl = $this->getEntityUrl(). $this->id . '/otp_generate';
 
         return $this->request('POST', $relativeUrl);
+    }
+
+    /**
+     * payment create
+     *
+     * @param string $encrypted string
+     */
+    public function createPayment($string = '')
+    {
+        $relativeUrl = $this->getEntityUrl(). 'pay';
+
+        return $this->request('PUT', $relativeUrl, $string);
     }
 
 }

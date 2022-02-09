@@ -5,8 +5,8 @@ namespace Omnipay\Api;
 use Requests;
 use Exception;
 use Requests_Hooks;
-//use Razorpay\Api\Errors;
-//use Razorpay\Api\Errors\ErrorCode;
+use Omnipay\Api\Errors;
+use Omnipay\Api\Errors\ErrorCode;
 
 
 // Available since PHP 5.5.19 and 5.6.3
