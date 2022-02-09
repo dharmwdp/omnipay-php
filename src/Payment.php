@@ -16,11 +16,11 @@ class Payment extends Entity
 
     public function all($options = array())
     {
-        if(isset($options['X-Razorpay-Account'])){
+        if(isset($options['X-Omnipay-Account'])){
 
-            Request::addHeader('X-Razorpay-Account', $options['X-Razorpay-Account']);
+            Request::addHeader('X-Omnipay-Account', $options['X-Omnipay-Account']);
 
-            unset($options['X-Razorpay-Account']);
+            unset($options['X-Omnipay-Account']);
         }
 
         return parent::all($options);
