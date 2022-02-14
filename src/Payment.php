@@ -9,48 +9,21 @@ class Payment extends Entity
     /**
      * @param $id Payment id
      */
-    public function fetch($id)
+    public function retriveTransaction($transactionID)
     {
-        return parent::fetch($id);
+        $relativeUrl = $this->getEntityUrl() . 'transaction/'.$transactionID;
+
+        return $this->request('GET', $relativeUrl);
     }
 
-    public function all($options = array())
+    public function transactionList($attributes = array())
     {
-        if(isset($options['X-Omnipay-Account'])){
+        $relativeUrl = $this->getEntityUrl() . 'transaction-list';
 
-            Request::addHeader('X-Omnipay-Account', $options['X-Omnipay-Account']);
+        return $this->request('POST', $relativeUrl, $attributes);
+    }  
 
-            unset($options['X-Omnipay-Account']);
-        }
-
-        return parent::all($options);
-    }
-
-    /**
-     * Patches given payment with new attributes
-     *
-     * @param array $attributes
-     *
-     * @return Payment
-     */
-    public function edit($attributes = array())
-    {
-        $url = $this->getEntityUrl() . $this->id;
-
-        return $this->request(Requests::PATCH, $url, $attributes);
-    }
-
-    /**
-     * @param $id Payment id
-     */
-    public function refund($attributes = array())
-    {
-        $refund = new Refund;
-
-        $attributes = array_merge($attributes, array('payment_id' => $this->id));
-
-        return $refund->create($attributes);
-    }
+   
 
     /**
      * @param $id Payment id
@@ -69,13 +42,12 @@ class Payment extends Entity
         return $this->request('POST', $relativeUrl, $attributes);
     }
 
-    public function refunds()
+    public function refund($attributes = array())
     {
-        $refund = new Refund;
 
-        $options = array('payment_id' => $this->id);
+        $relativeUrl = $this->getEntityUrl() . 'refund';
 
-        return $refund->all($options);
+        return $this->request('PUT', $relativeUrl, $attributes);
     }
 
     public function transfers()
@@ -106,95 +78,15 @@ class Payment extends Entity
         $relativeUrl = $this->getEntityUrl() . $this->id . '/refunds/'.$refundId;
 
         return $this->request('GET', $relativeUrl);
-    }
-
-    public function createRecurring($attributes = array())
-    {
-        $relativeUrl = $this->getEntityUrl() . 'create/recurring';
-
-        return $this->request('POST', $relativeUrl, $attributes);
-    }
-    /**
-     * fetch Card Details
-     *
-     * @param id $id
-     *
-     * @return card
-     */
-    public function fetchCardDetails()
-    {
-        $relativeUrl = $this->getEntityUrl() . $this->id . '/card';
-
-        return $this->request('GET', $relativeUrl);
-    }
-     /**
-     * fetchPaymentDowntime
-     *
-     */
-    public function fetchPaymentDowntime()
-    {
-        $relativeUrl = $this->getEntityUrl() . 'downtimes';
-
-        return $this->request('GET', $relativeUrl);
-    }
-    /**
-     * fetch Payment Downtime Id
-     *
-     * @param id $id
-     *
-     * @return card
-     */
-    public function fetchPaymentDowntimeById($id)
-    {
-        $relativeUrl = $this->getEntityUrl() . 'downtimes' . $id;
-
-        return $this->request('GET', $relativeUrl);
-    }
-    /**
-     * create Payment Json
-     *
-     * @param array $attributes
-     */
-    public function createPaymentJson($attributes = array())
-    {
-        $relativeUrl = $this->getEntityUrl() . 'encryptDecrypt2/encrypt';
-
-        return $this->request('POST', $relativeUrl, $attributes);
-    }
-    /**
-     * submit otp
-     *
-     * @param id $id
-     *
-     * @param array $attributes
-     */
-    public function otpSubmit($attributes = array())
-    {
-        $relativeUrl = $this->getEntityUrl(). $this->id . '/otp/submit';
-
-        return $this->request('POST', $relativeUrl, $attributes);
-    }
-
-    /**
-     * Generate otp
-     *
-     * @param id $id
-     *
-     * @param array $attributes
-     */
-    public function otpGenerate()
-    {
-        $relativeUrl = $this->getEntityUrl(). $this->id . '/otp_generate';
-
-        return $this->request('POST', $relativeUrl);
-    }
+    } 
+    
 
     /**
      * payment create
      *
      * @param string $encrypted string
      */
-    public function createPayment($string = '')
+    public function createPayment($string = array())
     {
         $relativeUrl = $this->getEntityUrl(). 'pay';
 
