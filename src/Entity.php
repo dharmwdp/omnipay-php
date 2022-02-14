@@ -57,11 +57,18 @@ class Entity extends Resource implements ArrayableInterface
 
     protected function getEntityUrl()
     {
+
+        $apiMode = Api::getApiMode();
         $fullClassName = get_class($this);
         $pos = strrpos($fullClassName, '\\');
         $className = substr($fullClassName, $pos + 1);
         $className = $this->snakeCase($className);
-        return $className.'s/';
+        if($apiMode == 1){
+            $dynamic_url = $className.'s/';            
+        }else{
+            $dynamic_url = 'test/'.$className.'s/';
+        }
+        return $dynamic_url;
     }
 
     protected function snakeCase($input)

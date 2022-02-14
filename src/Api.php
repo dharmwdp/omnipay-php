@@ -4,11 +4,13 @@ namespace Omnipay\Api;
 
 class Api
 {
-    protected static $baseUrl = 'http://localhost/psp/api/v1/test/';
+    protected static $baseUrl = 'https://psp.digitalworld.com.sa/api/v1/';
 
     protected static $key = null;
 
     protected static $secret = null;
+
+    protected static $apiMode = null;
 
     /*
      * App info is to store the Plugin/integration
@@ -22,10 +24,12 @@ class Api
      * @param string $key
      * @param string $secret
      */
-    public function __construct($key, $secret)
+    public function __construct($key, $secret, $apiMode)
     {
         self::$key = $key;
         self::$secret = $secret;
+        self::$apiMode = $apiMode;
+
     }
 
     /*
@@ -82,6 +86,11 @@ class Api
     public static function getSecret()
     {
         return self::$secret;
+    }
+
+    public static function getApiMode()
+    {
+        return self::$apiMode;
     }
 
     public static function getFullUrl($relativeUrl)
