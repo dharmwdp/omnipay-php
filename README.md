@@ -43,14 +43,15 @@ The resources can be accessed via the `$api` object. All the methods invocations
 ```php
     // $api->class->function() to access the API
     //Example
-    // This is for encrypt decrypt before call any API
+    // This is for encrypt decrypt before call API
+    //Create Payment
     $paymentParm = array('customer' =>array('name'=>'Dharmraj Kumhar', 'email'=>'dharmraj.kumhar@example.com') ,'order'=>array('amount'=>'1', 'currency' => 'SAR'),'sourceOfFunds' => array('provided'=>array('card'=>array('number'=>'5123450000000008','expiry'=>array('month'=>'12','year'=>'2023'), 'cvv'=>'999')), 'cardType' => 'C'), 'remark'=>array('description'=>'This payment is done by card'));
     $api->encryptdecrypt->create($paymentParm, $secret_key, 'encrypt');
     // Payment API
     //Alwase send $param['trandata'] in encrypted string
     $result = $api->payment->createPayment($param);
     
-    Refund Transaction
+    //Refund Transaction
     $refundParm = array('transaction' =>array('id'=>'nt8my581z620365207292e','amount'=>'1', 'currency' => 'SAR'), 'remark'=>array('description'=>'Refund transaction'));
     $api->encryptdecrypt->create($paymentParm, $secret_key, 'encrypt');
     $result = $api->payment->refund($param);
