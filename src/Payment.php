@@ -21,27 +21,9 @@ class Payment extends Entity
         $relativeUrl = $this->getEntityUrl() . 'transaction-list';
 
         return $this->request('POST', $relativeUrl, $attributes);
-    }  
+    }   
 
-   
-
-    /**
-     * @param $id Payment id
-     */
-    public function capture($attributes = array())
-    {
-        $relativeUrl = $this->getEntityUrl() . $this->id . '/capture';
-
-        return $this->request('POST', $relativeUrl, $attributes);
-    }
-
-    public function transfer($attributes = array())
-    {
-        $relativeUrl = $this->getEntityUrl() . $this->id . '/transfers';
-
-        return $this->request('POST', $relativeUrl, $attributes);
-    }
-
+    
     public function refund($attributes = array())
     {
 
@@ -49,22 +31,7 @@ class Payment extends Entity
 
         return $this->request('PUT', $relativeUrl, $attributes);
     }
-
-    public function transfers()
-    {
-        $transfer = new Transfer();
-
-        $transfer->payment_id = $this->id;
-
-        return $transfer->all();
-    }
-
-    public function bankTransfer()
-    {
-        $relativeUrl = $this->getEntityUrl() . $this->id . '/bank_transfer';
-
-        return $this->request('GET', $relativeUrl);
-    }
+    
 
     public function fetchMultipleRefund($options = array())
     {
@@ -91,6 +58,42 @@ class Payment extends Entity
         $relativeUrl = $this->getEntityUrl(). 'pay';
 
         return $this->request('PUT', $relativeUrl, $string);
+    }
+
+    /**
+     * subscription payment
+     *
+     * @param string $encrypted string
+     */
+    public function subscription($string = array())
+    {
+        $relativeUrl = $this->getEntityUrl(). 'subscription';
+
+        return $this->request('PUT', $relativeUrl, $string);
+    }
+
+    /**
+     * subscription cancel
+     *
+     * @param string $encrypted string
+     */
+    public function cancelSubscription($customerId=null)
+    {
+        $relativeUrl = $this->getEntityUrl(). 'cancelSubscription/'.$customerId;
+
+        return $this->request('GET', $relativeUrl);
+    }
+
+    /**
+     * subscription cancel
+     *
+     * @param string $encrypted string
+     */
+    public function subscriptionDetail($customerId=null)
+    {
+        $relativeUrl = $this->getEntityUrl(). 'subscriptionDetail/'.$customerId;
+        
+        return $this->request('GET', $relativeUrl);
     }
 
 }
