@@ -31,9 +31,9 @@ Instantiate the omnipay php instance with `user_name ` , `password` & secret_key
 ```php
 use Omnipay\Api\Api;
 
-$secret_key = '89eb5f3beb06a663a81c0c5a392fdb97';
-$api_user_name = 'psp_test.paasy3u5.cGFhc3kzdTU2NGViZA==';
-$api_password = 'OVNHR3dHaDd5ZnpGN0ExcnByUmdPQVprNzliZUhMbmR3bVJCSUp3alFyUT0=';
+$secret_key = 'dCtLbk5FYVFGMVYrbFNGZTdEdzVpbSt3TFlYOC9NczNLaDZ0ZFo1WHcwVT0=';
+$api_user_name = 'psp_test.eaohcfml.ZWFvaGNmbWw=';
+$api_password = 'L1VPcklHbnh6T3RyWkdEVWZhci9HR1hSaHlrb0MwVEN5R0VtcUxkWHMwWT0=';
 $apiMode = 0; // 0=Test, 1=Live
 $api = new Api($api_user_name, $api_password, $apiMode); 
 ```
@@ -45,10 +45,11 @@ The resources can be accessed via the `$api` object. All the methods invocations
     //Example
     //This is for encrypt decrypt before call API
     //Create Payment
-    $paymentParm = array('customer' =>array('name'=>'Dharmraj Kumhar', 'email'=>'dharmraj.kumhar@example.com') ,'order'=>array('amount'=>'1', 'currency' => 'SAR'),'sourceOfFunds' => array('provided'=>array('card'=>array('number'=>'5123450000000008','expiry'=>array('month'=>'12','year'=>'2023'), 'cvv'=>'999')), 'cardType' => 'C'), 'remark'=>array('description'=>'This payment is done by card'));
+    $paymentParm = array('customer' =>array('name'=>'Raj', 'email'=>'raj2022@example.com') ,'order'=>array('amount'=>'1', 'currency' => 'SAR'),'sourceOfFunds' => array('provided'=>array('card'=>array('number'=>'5123450000000008','expiry'=>array('month'=>'12','year'=>'2023'), 'cvv'=>'999')), 'cardType' => 'C'), 'remark'=>array('description'=>'This payment is done by card'));
     $api->encryptdecrypt->create($paymentParm, $secret_key, 'encrypt');
     // Payment API
     //Alwase send $param['trandata'] in encrypted string
+    $param['trandata'] = $encripted_result['content']['apiResponse'];
     $result = $api->payment->createPayment($param);
     
     //Refund Transaction
@@ -63,6 +64,22 @@ The resources can be accessed via the `$api` object. All the methods invocations
     //Transaction List between two date range
     $AllTransParm = array('transaction' =>array('startdate'=>'2022-01-15','enddate'=>'2022-02-09'));
     $result = $api->payment->transactionList($AllTransParm);
+
+    //subscription
+    $parms = array('customer' =>array('name'=>'Raj','email'=>'raj2022@example.com', 'interval'=>'1','interval_type'=>'3','interval_count'=>''),'order'=>array('amount'=>'1','currency' => 'SAR'),'sourceOfFunds' => array('provided'=>array('card'=>array('number'=>'5123450000000008','expiry'=>array('month'=>'12','year'=>'2023'), 'cvv'=>'999')),'cardType' => 'C'));
+    $encripted_result = $api->encryptdecrypt->create($parms, $secret_key, 'encrypt');
+    $param['trandata'] = $encripted_result['content']['apiResponse'];
+    if(!empty($encripted_result['content']['apiResponse']) && $encripted_result['code'] == 200){
+        $result = $api->payment->subscription($param);
+    }
+
+    //subscription detail
+    $customer_id = "202130020209387";
+    $result = $api->payment->subscriptionDetail($customer_id);
+
+    //subscription cancel
+    $customer_id = "202130294267467";
+    $result = $api->payment->cancelSubscription($customer_id);
 ```
 
 ## License
